@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenador de Anagramas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Ordenador de Anagramas</h2>
+
+        <div class="form-container">
+            <label for="inputStrings">Insira as strings separadas por vírgula:</label>
+            <input type="text" id="inputStrings">
+            <button onclick="processarStrings()">Processar Strings</button>
+        </div>
+
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function encontrarAnagramas(strings) {
+            const array = strings.split(',').map(str => ({ str: str.trim() }));
+
+            const anagramasDict = {};
+
+            // Agrupar palavras por seus anagramas
+            array.forEach(item => {
+                const palavra = item.str;
+                const chaveAnagrama = palavra.split('').sort().join('');
+                if (!anagramasDict[chaveAnagrama]) {
+                    anagramasDict[chaveAnagrama] = [];
+                }
+                anagramasDict[chaveAnagrama].push(palavra);
+            });
+
+            // Construir o novo array mantendo a ordem original
+            const novoArray = [];
+            const anagramasProcessados = new Set();
+
+            array.forEach(item => {
+                const palavra = item.str;
+                const chaveAnagrama = palavra.split('').sort().join('');
+                const anagramas = anagramasDict[chaveAnagrama];
+
+                // Adicionar apenas se houver mais de uma palavra no anagrama
+                if (anagramas.length > 1 && !anagramasProcessados.has(chaveAnagrama)) {
+                    novoArray.push({ anagramas });
+                    anagramasProcessados.add(chaveAnagrama);
+                }
+            });
+
+            return novoArray;
+        }
+
+        function processarStrings() {
+            const inputStrings = document.getElementById('inputStrings');
+            const resultadoElement = document.getElementById('resultado');
+
+            const strings = inputStrings.value;
+
+            if (strings.trim() !== '') {
+                const resultadoJson = encontrarAnagramas(strings);
+
+                // Exibir o resultado em uma lista
+                const listaAnagramas = '<ul>' +
+                    resultadoJson.map(item => '<li>{ "anagramas": ' + JSON.stringify(item.anagramas) + ' }</li>').join('') +
+                    '</ul>';
+
+                resultadoElement.innerHTML = '<p><strong>Resultado Ordenado:</strong></p>' + listaAnagramas;
+            } else {
+                resultadoElement.innerHTML = '<p><strong>Erro:</strong> Insira pelo menos uma string.</p>';
+            }
+        }
+    </script>
+
+</body>
+</html>
