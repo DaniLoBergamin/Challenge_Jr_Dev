@@ -2,7 +2,7 @@
     - Utilizando a linguagem de sua escolha, crie um algoritmo que dado um array de strings no formato JSON conforme (JSON_ENTRADA.JSON), retorne um novo JSON Array (JSON_SAIDA.JSON), formado pelos anagramas encontrados no array original.    
     - Atenção: A resposta deve estar na ORDEM em que os termos aparecem.
 
-**MOTIVO DA UTILIZAÇÃO DE PYTHON PARA ESSE DESAFIO:**
+**MOTIVO DA UTILIZAÇÃO DE PYTHON PARA ESSE DESAFIO:**    
     - 1º - Sintaxe clara e objetiva, útil na manipulação de strings e dados JSON.    
     - 2º - Bibliotecas integradas e externas como "collections", útil ao lidar com anagramas.     
 
