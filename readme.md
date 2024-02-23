@@ -8,7 +8,7 @@
 
 **LINHA DE PENSAMENTO PARA O DESAFIO:**        
     ANAGRAMA - Palavra formada pela transposição das letras de outra palavra, onde os elementos originais são rearranjados para formar a nova palavra.            
-    ORDENAÇÃO - Organizar os elementos em uma determinada sequência, conforme solicitao no desafio.            
+    ORDENAÇÃO - Organizar os elementos em uma determinada sequência, conforme solicitado no desafio.            
     OTIMIZAÇÃO - Armazenar e manipular os anagramas.        
     TESTES - Verificar a resposta e funcionamento do código.        
 
